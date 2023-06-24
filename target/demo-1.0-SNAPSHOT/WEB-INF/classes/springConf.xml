@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!--配置dataSource数据源-->
+	<context:property-placeholder location="jdbc.properties"/>
+	<bean id="druidDataSource" class="${spring.datasource.type}">
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+	</bean>
+
+	<!--传统MyBatis-->
+<!--	<bean id="resources" class="org.apache.ibatis.io.Resources" factory-method="getResourceAsStream">-->
+<!--		<constructor-arg name="resource" value="mybatisConf.xml"/>-->
+<!--	</bean>-->
+<!--	&lt;!&ndash;无参构造方法&ndash;&gt;-->
+<!--	<bean id="builder" class="org.apache.ibatis.session.SqlSessionFactoryBuilder"/>-->
+<!--	&lt;!&ndash;实例工厂方法&ndash;&gt;-->
+<!--	<bean id="sessionFactory" factory-bean="builder" factory-method="build">-->
+<!--		<constructor-arg name="inputStream" ref="resources"/>-->
+<!--	</bean>-->
+	<!--MyBatis-Spring-->
+	<!--将SqlSessionFactory存储到spring容器-->
+	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="druidDataSource"/>
+		<property name="typeAliasesPackage" value="cn.apkr.domain"/>
+	</bean>
+	<!--扫描指定的包，产生Mapper对象存储到spring容器-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="cn.apkr.mapper"/>
+	</bean>
+	<bean id="userService" class="cn.apkr.service.impl.UserServiceImpl">
+		<property name="userMapper" ref="userMapper"/>
+	</bean>
+	<bean id="complexDataService" class="cn.apkr.service.impl.ComplexDataServiceImpl">
+		<property name="complexDataMapper" ref="complexDataMapper"/>
+		<property name="courseMapper" ref="courseMapper"/>
+		<property name="scoreMapper" ref="scoreMapper"/>
+	</bean>
+	<bean id="studentService" class="cn.apkr.service.impl.StudentServiceImpl">
+		<property name="studentMapper" ref="studentMapper"/>
+	</bean>
+	<bean id="courseService" class="cn.apkr.service.impl.CourseServiceImpl">
+		<property name="courseMapper" ref="courseMapper"/>
+	</bean>
+	<bean id="scoreService" class="cn.apkr.service.impl.ScoreServiceImpl">
+		<property name="scoreMapper" ref="scoreMapper"/>
+	</bean>
+
+</beans>

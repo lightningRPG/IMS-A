@@ -1,0 +1,98 @@
+@import url(header.css);
+@import url(../iconfont/iconfont.css);
+.box-bg .box {
+  margin-bottom: 100px;
+}
+.box-bg .box .topping-bar {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 36px;
+  padding: 0 16px;
+  background-color: gray;
+  text-align: center;
+  font-size: 16px;
+}
+.box-bg .box .topping-bar > * {
+  cursor: pointer;
+  height: 100%;
+  padding: 0 10px;
+  line-height: 36px;
+  text-decoration: none;
+  color: #222;
+}
+.box-bg .box .topping-bar > *:hover {
+  background-color: black;
+  color: aliceblue;
+}
+.box-bg .box .topping-bar .insert-bg {
+  float: left;
+  transition: 0.5s;
+}
+.box-bg .box .topping-bar .insert-bg:hover > .icon-add {
+  transform: rotateZ(-180deg);
+}
+.box-bg .box .topping-bar .insert-bg .icon-add {
+  display: inline-block;
+  font-size: 24px;
+  transition: 0.3s;
+}
+.box-bg .box .topping-bar .logout {
+  float: right;
+  transition: 0.5s;
+}
+.box-bg .box .search-bg {
+  padding: 50px 0;
+  text-align: center;
+}
+.box-bg .box .search-bg .inputs-bg {
+  position: relative;
+  display: inline-block;
+}
+.box-bg .box .search-bg .inputs-bg [name="selectKeyword"] {
+  width: 500px;
+  height: 40px;
+  padding: 8px;
+  border: 1px solid black;
+}
+.box-bg .box .search-bg .inputs-bg [name="selectData"] {
+  position: absolute;
+  right: 0;
+  width: 80px;
+  height: 40px;
+}
+.box-bg .box .search-bg .inputs-bg .error-tips {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(120%, -50%);
+  height: 16px;
+  font-size: 12px;
+  color: red;
+}
+.box-bg .box .display-bg {
+  width: 1100px;
+  margin: 0 auto;
+  background-color: white;
+  text-align: center;
+}
+.box-bg .box .display-bg .data-table {
+  width: 100%;
+}
+.box-bg .box .display-bg .data-table tr > * {
+  padding: 12px 10px;
+  max-width: 200px;
+  word-wrap: break-word;
+}
+.box-bg .box .display-bg .data-table tr th {
+  height: 50px;
+  font-size: 20px;
+}
+.box-bg .box .display-bg .data-table tr td:last-child {
+  width: 100px;
+}
+.box-bg .box .display-bg .data-table tr td:last-child button {
+  padding: 2px 3px;
+  font-size: 10px;
+}

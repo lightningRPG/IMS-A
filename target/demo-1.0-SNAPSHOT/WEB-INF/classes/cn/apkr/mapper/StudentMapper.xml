@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：名称空间 -->
+<mapper namespace="cn.apkr.mapper.StudentMapper">
+    <!--查询-->
+    <select id="selectStudent" parameterType="student" resultType="student">
+        select * from j08l_student
+        <where>
+            <if test="sid != null">
+                and `sid` = #{sid}
+            </if>
+            <if test="name != null">
+                and `name` like #{name}
+            </if>
+            <if test="classname != null">
+                and `classname` = #{classname}
+            </if>
+            <if test="sex != null">
+                and `sex` = #{sex}
+            </if>
+        </where>
+    </select>
+    <select id="selectAll" resultType="student">
+        select * from j08l_student;
+    </select>
+
+    <!--添加-->
+    <insert id="insertStudent" parameterType="student">
+        insert into j08l_student values (#{sid}, #{name}, #{classname}, #{sex})
+    </insert>
+
+    <!--修改-->
+    <update id="updateStudentById" parameterType="student">
+        update j08l_student
+        <set>
+            <if test="name != null">
+                `name` = #{name},
+            </if>
+            <if test="classname != null">
+                `classname` = #{classname},
+            </if>
+            <if test="sex != null">
+                `sex` = #{sex},
+            </if>
+        </set>
+        where `sid` = #{sid}
+    </update>
+
+    <!--删除-->
+    <delete id="deleteStudent" parameterType="student">
+        delete from j08l_student
+        <where>
+            <if test="sid != null">
+                and `sid` = #{sid}
+            </if>
+            <if test="name != null">
+                and `name` = #{name}
+            </if>
+            <if test="classname != null">
+                and `classname` = #{classname}
+            </if>
+            <if test="sex != null">
+                and `sex` = #{sex}
+            </if>
+        </where>
+    </delete>
+
+</mapper>

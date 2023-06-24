@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/showRoot.css">
+    <script src="../js/showRoot.js"></script>
+    <title>管理员面板</title>
+</head>
+<body>
+    <div class="box-bg">
+        <div id="box" class="box">
+            <div class="topping-bar">
+                <a href="#" class="insert-bg"><i class="iconfont icon-add"></i></a>
+                <a href="#" class="logout">注销</a>
+            </div>
+            <!-- 导入标题 -->
+            <script src="../js/htmlTitle.js"></script>
+            <form class="search-bg">
+                <div class="inputs-bg">
+                    <label for="search-bar">
+                        <input type="text" id="search-bar" name="selectKeyword" placeholder="输入关键字搜索"/>
+                    </label>
+                    <input type="submit" name="selectData" value="搜索"/>
+                    <div class="error-tips">非法搜索内容</div>
+                    <div class="help-tips"></div>
+                </div>
+            </form>
+            <div class="display-bg">
+                <table id="data-table" class="data-table" border="1px" cellspacing="0px">
+                    <tr>
+                        <th>学号</th>
+                        <th>班级</th>
+                        <th>姓名</th>
+                        <th>科目</th>
+                        <th>成绩</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>1234567890123</td>
+                        <td>20数字媒体技术2班</td>
+                        <td>阿拉伯人</td>
+                        <td>论撞车与被撞的伤害性</td>
+                        <td>120.00</td>
+                        <td>
+                            <button class="update-btn">修改</button>
+                            <button class="delete-btn">删除</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

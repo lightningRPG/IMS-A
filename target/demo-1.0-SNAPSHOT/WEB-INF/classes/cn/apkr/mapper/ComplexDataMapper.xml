@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：名称空间 -->
+<mapper namespace="cn.apkr.mapper.ComplexDataMapper">
+
+    <resultMap id="complexDataResultMap" type="complexData">
+        <result property="courseName" column="course_name"/>
+    </resultMap>
+
+    <!--查询-->
+    <select id="selectComplexData" resultMap="complexDataResultMap">
+        select * from j08l_complexdata
+        <where>
+            <if test="sid != null">
+                and `sid` like #{sid}
+            </if>
+            <if test="classname != null">
+                and `classname` like #{classname}
+            </if>
+            <if test="name != null">
+                and `name` like #{name}
+            </if>
+            <if test="courseName != null">
+                and `course_name` like #{courseName}
+            </if>
+            <if test="score != null">
+                and `score` like #{score}
+            </if>
+        </where>
+        order by
+            cast(`sid` as decimal) desc,
+            convert(`classname` using gbk),
+            convert(`name` using gbk),
+            convert(`course_name` using gbk);
+    </select>
+    <select id="selectAll" resultMap="complexDataResultMap">
+        select * from j08l_complexdata
+        order by
+            cast(`sid` as decimal) desc,
+            convert(`classname` using gbk),
+            convert(`name` using gbk),
+            convert(`course_name` using gbk);
+    </select>
+
+</mapper>

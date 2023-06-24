@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：名称空间 -->
+<mapper namespace="cn.apkr.mapper.ScoreMapper">
+    <!--查询-->
+    <select id="selectScore" parameterType="score" resultType="score">
+        select * from j08l_score
+        <where>
+            <if test="sid != null">
+                and `sid` = #{sid}
+            </if>
+            <if test="cid != null">
+                and `cid` = #{cid}
+            </if>
+            <if test="score != null">
+                and `score` = #{score}
+            </if>
+        </where>
+    </select>
+    <select id="selectAll" resultType="score">
+        select * from j08l_score;
+    </select>
+
+    <!--添加-->
+    <insert id="insertScore" parameterType="score">
+        insert into j08l_score values (#{sid}, #{cid}, #{score})
+    </insert>
+
+    <!--修改-->
+    <update id="updateScoreById" parameterType="score">
+        update j08l_score
+        <set>
+            <if test="score != null">
+                `score` = #{score},
+            </if>
+        </set>
+        <where>
+            <if test="sid != null">
+                and `sid` = #{sid}
+            </if>
+            <if test="cid != null">
+                and `cid` = #{cid}
+            </if>
+        </where>
+    </update>
+
+    <!--删除-->
+    <delete id="deleteScore" parameterType="score">
+        delete from j08l_score
+        <where>
+            <if test="sid != null">
+                and `sid` = #{sid}
+            </if>
+            <if test="cid != null">
+                and `cid` = #{cid}
+            </if>
+            <if test="score != null">
+                and `score` = #{score}
+            </if>
+        </where>
+    </delete>
+</mapper>
