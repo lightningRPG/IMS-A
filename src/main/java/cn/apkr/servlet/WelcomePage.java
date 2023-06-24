@@ -30,7 +30,7 @@ public class WelcomePage extends HttpServlet {
             }
         }
         // 跳转至欢迎页（即当前项目的登录界面）
-        req.getRequestDispatcher("/jsp/login.jsp").forward(req, resp);
+        req.getRequestDispatcher("/login").forward(req, resp);
     }
 
     @Override

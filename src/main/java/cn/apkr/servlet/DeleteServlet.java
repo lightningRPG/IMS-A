@@ -11,7 +11,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.Objects;
 
-@WebServlet(urlPatterns = "/delete", asyncSupported = true)
+//@WebServlet(urlPatterns = "/delete", asyncSupported = true)   // 升级为SSM
 public class DeleteServlet extends HttpServlet {
     private ComplexDataService complexDataService;
 

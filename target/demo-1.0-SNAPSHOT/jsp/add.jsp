@@ -10,6 +10,24 @@
     <script src="${pageContext.request.contextPath}/js/add.js"></script>
     <title>添加数据(临时)</title>
     <style>
+        #back-a {
+            display: inline-block;
+            width: 100%;
+            height: 50px;
+            margin: 0;
+            color: white;
+            font-size: 20px;
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+            transition: .3s;
+        }
+        #back-a:hover {
+            font-size: 30px;
+            color: #222222;
+            background-color: #cccccc;
+        }
+
         form {
             width: 500px;
             margin: 20px auto;
@@ -38,6 +56,9 @@
 <body>
     <div class="box-bg">
         <div id="box" class="box">
+            <%--返回数据展示界面--%>
+            <a id="back-a" href="${pageContext.request.contextPath}/dataBoard">返回</a>
+
             <script src="${pageContext.request.contextPath}/js/htmlTitle.js"></script>
             <!-- TODO:添加学生、添加课程、录入分数 -->
             <!-- 正在考虑要不要整合到showRoot的搜索界面与标题之间的位置 -->

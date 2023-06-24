@@ -2,14 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+
+	<context:property-placeholder location="classpath:jdbc.properties, classpath:rAccountData.properties"/>
 	<!--配置dataSource数据源-->
-	<context:property-placeholder location="jdbc.properties"/>
 	<bean id="druidDataSource" class="${spring.datasource.type}">
 		<property name="driverClassName" value="${jdbc.driver}"/>
 		<property name="url" value="${jdbc.url}"/>
@@ -30,15 +34,14 @@
 	<!--MyBatis-Spring-->
 	<!--将SqlSessionFactory存储到spring容器-->
 	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!--数据源设置为druid数据库连接池-->
 		<property name="dataSource" ref="druidDataSource"/>
+		<!--设置pojo包路径-->
 		<property name="typeAliasesPackage" value="cn.apkr.domain"/>
 	</bean>
 	<!--扫描指定的包，产生Mapper对象存储到spring容器-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="cn.apkr.mapper"/>
-	</bean>
-	<bean id="userService" class="cn.apkr.service.impl.UserServiceImpl">
-		<property name="userMapper" ref="userMapper"/>
 	</bean>
 	<bean id="complexDataService" class="cn.apkr.service.impl.ComplexDataServiceImpl">
 		<property name="complexDataMapper" ref="complexDataMapper"/>
@@ -54,5 +57,13 @@
 	<bean id="scoreService" class="cn.apkr.service.impl.ScoreServiceImpl">
 		<property name="scoreMapper" ref="scoreMapper"/>
 	</bean>
+	<bean id="userService" class="cn.apkr.service.impl.UserServiceImpl">
+		<property name="userMapper" ref="userMapper"/>
+	</bean>
+
+	<!--启用MVC注解-->
+	<mvc:annotation-driven/>
+	<!--加载controller-->
+	<context:component-scan base-package="cn.apkr.controller"/>
 
 </beans>

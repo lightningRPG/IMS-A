@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Objects;
 
-@WebServlet(urlPatterns = "/insert")
+//@WebServlet(urlPatterns = "/insert")
 public class InsertServlet extends HttpServlet {
     private StudentService studentService;
     private CourseService courseService;
