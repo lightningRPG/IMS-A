@@ -49,9 +49,10 @@ insert into j08l_course values
 create table j08l_score(
     `sid` varchar(30) not null,
     `cid` varchar(30) not null,
-    `score` float,
-    foreign key (`sid`) references j08l_student(`sid`) on delete cascade,
-    foreign key (`cid`) references j08l_course(`cid`) on delete cascade
+    `score` float default 0,
+    primary key (sid, cid),
+    foreign key (sid) references j08l_student(sid) on delete cascade,
+    foreign key (cid) references j08l_course(cid) on delete cascade
 );
 
 insert into j08l_score values
@@ -62,6 +63,7 @@ insert into j08l_score values
 ('2020108200208', '2', 58.5),
 ('2020108200206', '2', 100.0);
 
+# 视图
 drop view if exists j08l_complexData;
 create view j08l_complexData as
     select

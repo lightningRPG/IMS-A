@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
-//@RequestMapping("data")
+@RequestMapping("data")
 public class ComplexDataController {
 
 	@Autowired

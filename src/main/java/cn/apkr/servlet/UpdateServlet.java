@@ -12,7 +12,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.Objects;
 
-//@WebServlet(urlPatterns = "/update", asyncSupported = true)  // 使用SSM之后就不需要servlet了
+@WebServlet(urlPatterns = "/update", asyncSupported = true)  // 使用SSM之后就不需要servlet了
 public class UpdateServlet extends HttpServlet {
     private ComplexDataService complexDataService;
 

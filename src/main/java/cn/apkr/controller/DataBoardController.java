@@ -40,10 +40,11 @@ public class DataBoardController {
 		for (Cookie cookie : request.getCookies()) {
 			if (cookie.getName().equals("username")) {
 				String rootList = (String) session.getAttribute("rootList");
-				boolean isRoot = rootList.contains(cookie.getValue());
-				// 判断是否管理员来跳转至不同功能的页面
-				return isRoot ? "/jsp/showRoot.jsp" : "/jsp/show.jsp";
-
+				if (rootList != null) {
+					boolean isRoot = rootList.contains(cookie.getValue());
+					// 判断是否管理员来跳转至不同功能的页面
+					return isRoot ? "/jsp/showRoot.jsp" : "/jsp/show.jsp";
+				}
 			}
 		}
 		return "redirect:/";

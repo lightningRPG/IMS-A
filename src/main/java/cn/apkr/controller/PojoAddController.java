@@ -86,9 +86,8 @@ public class PojoAddController {
 			Score tempSco = new Score();
 			tempSco.setSid(sid);
 			tempSco.setCid(cid);
-			boolean isScoEmpty = scoreService.selectScore(tempSco).isEmpty();
 
-			if (isScoEmpty) {
+			if (scoreService.selectScore(tempSco).isEmpty()) {
 				// 插入分数
 				Student testStd = new Student();
 				Course testCor = new Course();
@@ -96,7 +95,9 @@ public class PojoAddController {
 				testCor.setCid(cid);
 				boolean isStdEmpty = studentService.selectStudent(testStd).isEmpty();
 				boolean isCorEmpty = courseService.selectCourse(testCor).isEmpty();
-				if (isStdEmpty && isCorEmpty) {
+				System.out.println(isStdEmpty);
+				System.out.println(isCorEmpty);
+				if (!isStdEmpty && !isCorEmpty) {		// 确认学生和课程都存在
 					tempSco = new Score(sid, cid, score);
 					isSuccess = scoreService.insertScore(tempSco);
 				}
