@@ -26,7 +26,7 @@ public class WelcomeController {
 		session.setAttribute("rootList", rootList);
 
 		// 检查Cookie登录信息
-		if (cookies != null) {	// 为空则表示从未访问过本网站或者禁止使用cookie
+		if (cookies != null) {	// 为空一般表示从未访问过本网站或者禁止使用cookie
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equals("loginState")) {
 					if (cookie.getValue().equals("1")) {
@@ -41,6 +41,6 @@ public class WelcomeController {
 			response.addCookie(new Cookie("loginState", "0"));
 		}
 		// 跳转至欢迎页（暂时没有欢迎页所以是当前项目的登录界面）
-		return "./jsp/login.jsp";
+		return "/jsp/login.jsp";
 	}
 }

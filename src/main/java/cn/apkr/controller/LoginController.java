@@ -30,12 +30,14 @@ public class LoginController {
 		if (request.getParameter("signIn") != null) {
 			// 登录
 			if (userService.signIn(username, password)) {
+				System.out.println("登录成功");
 				// 进入数据面板
 				response.addCookie(new Cookie("loginState", "1"));
 				response.addCookie(new Cookie("username", username));
 				response.addCookie(new Cookie("password", password));
 				return "redirect:/dataBoard";	// 唯一出口...
 			} else {
+				System.out.println("登录失败");
 				// 登录失败返回
 				session.setAttribute("errorTips", "用户名或密码错误");
 			}

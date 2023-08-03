@@ -15,7 +15,7 @@ public class WelcomePage extends HttpServlet {
         Properties pro = new Properties();
 
         // 导入管理员信息并存入session
-        pro.load(new FileInputStream(getServletContext().getRealPath("/WEB-INF/classes/rootAccountData.prop")));
+        pro.load(new FileInputStream(getServletContext().getRealPath("/WEB-INF/classes/rootAccountData.properties")));
         session.setAttribute("rootList", pro.getProperty("rootList"));
 
         // 检查Cookie登录信息
